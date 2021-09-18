@@ -8,7 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql';
     UserModule,
     AuthModule,
     MongooseModule.forRoot(
-      'mongodb+srv://abdo2020:01123689625@temwork-vxavl.mongodb.net/twitter?retryWrites=true&w=majority',
+      '',
     ),
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
