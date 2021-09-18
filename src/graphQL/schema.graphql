@@ -1,0 +1,74 @@
+scalar Upload
+type User {
+_id:ID!
+name:String
+email:String!
+password:String!
+image:String!
+tweets:[Tweet]!
+followings:[User!]!
+followers:[User!]!
+followingsCount:Int!
+followersCount:Int!
+tweetsCount:Int!
+createdAt:String!
+updatedAt:String!
+}
+type Tweet{
+_id:ID!
+text:String!
+userId:ID!
+favoriteCount:Int!
+isFavorited:Boolean
+createdAt:String!
+updatedAt:String!
+}
+type Auth {
+token : String!
+}
+type status{
+message : String!
+}
+input Pagination {
+limit:Int!
+page:Int!
+}
+input Register {
+email:String!
+name:String!
+password:String!
+image:String
+}
+input Login{
+email:String!
+password:String!
+}
+input CreateTweet{
+text:String!
+}
+input Follow{
+userIdFollow:ID!
+}
+type Picture{
+    URL: String
+}
+type follow {
+name:String
+image:String
+email:String
+}
+type Query { 
+me:User
+getTweetsUser(pagination:Pagination):[Tweet!]!
+getFollowersUser(pagination:Pagination):[follow!]!
+getFollowedUser(pagination:Pagination):[follow!]!
+}
+
+type Mutation{
+addProfilePicture(picture:Upload!,userId:ID!):Picture!
+cteateNewTweet(input:CreateTweet):User!
+signup(input:Register):User! 
+signin(input:Login):Auth!
+follow(follow:Follow!):User!
+unFollow(follow:Follow!):User!
+}
